@@ -164,56 +164,56 @@ class Term::termios is repr('CStruct') {
   method set_iflags(*@flags) {
     for @flags -> $flag {
       die "Uknown iflag $flag" unless %iflags{$flag};
-      $!iflag +|= %iflags{$flag};
+      $!iflag = $!iflag +| %iflags{$flag};
     }
   }
 
   method unset_iflags(*@flags) {
     for @flags -> $flag {
       die "Uknown iflag $flag" unless %iflags{$flag};
-      $!iflag +&= +^%iflags{$flag};
+      $!iflag = $!iflag +& +^%iflags{$flag};
     }
   }
 
   method set_oflags(*@flags) {
     for @flags -> $flag {
       die "Uknown oflag $flag" unless %oflags{$flag};
-      $!oflag +|= %oflags{$flag};
+      $!oflag = $!oflag +| %oflags{$flag};
     }
   }
 
   method unset_oflags(*@flags) {
     for @flags -> $flag {
       die "Uknown oflag $flag" unless %oflags{$flag};
-      $!oflag +&= +^%oflags{$flag};
+      $!oflag = $!oflag +& +^%oflags{$flag};
     }
   }
 
   method set_cflags(*@flags) {
     for @flags -> $flag {
       die "Uknown cflag $flag" unless %cflags{$flag};
-      $!cflag +|= %cflags{$flag};
+      $!cflag = $!cflag +| %cflags{$flag};
     }
   }
 
   method unset_cflags(*@flags) {
     for @flags -> $flag {
       die "Uknown cflag $flag" unless %cflags{$flag};
-      $!cflag +&= +^%cflags{$flag};
+      $!cflag = $!cflag +& +^%cflags{$flag};
     }
   }
 
   method set_lflags(*@flags) {
     for @flags -> $flag {
       die "Uknown lflag $flag" unless %lflags{$flag};
-      $!lflag +|= %lflags{$flag};
+      $!lflag = $!lflag +| %lflags{$flag};
     }
   }
 
   method unset_lflags(*@flags) {
     for @flags -> $flag {
       die "Uknown lflag $flag" unless %lflags{$flag};
-      $!lflag +&= +^%lflags{$flag};
+      $!lflag = $!lflag +& +^%lflags{$flag};
     }
   }
 }
