@@ -13,6 +13,8 @@ Class to interface to libc termios functions
 
 =head1 SYNOPSIS
 
+ use Term::termios;
+
  # Save the previous attrs
  my $saved_termios := Term::termios.new(fd => 1).getattr;
 

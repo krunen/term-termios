@@ -3,6 +3,8 @@ Term::termios
 
 termios routines for Rakudo Perl 6
 
+    use Term::termios;
+    
     # Save the previous attrs
     my $saved_termios := Term::termios.new(fd => 1).getattr;
     
