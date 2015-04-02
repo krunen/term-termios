@@ -2,6 +2,9 @@
     "name" : "Term::termios",
     "version" : "*",
     "description" : "termios routines for Rakudo Perl 6",
+    "provides" : {
+        "Term::termios" : "lib/Term/termios.pm6"
+    },
     "depends" : [ ],
     "repo-type" : "git",
     "source-url" : "git://github.com/krunen/term-termios.git"
