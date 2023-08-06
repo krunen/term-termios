@@ -1,6 +1,6 @@
 {
     "name"          : "Term::termios",
-    "version"       : "*",
+    "version"       : "0.2",
     "perl"          : "6.c",
     "author"        : "github:krunen",
     "authors"       : [ "Karl Rune Nilsen" ],
