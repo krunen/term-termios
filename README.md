@@ -25,12 +25,12 @@ termios routines for Rakudo Perl 6
     
     # Loop on characters from STDIN
     loop {
-	# Read single bytes until the buffer can be decoded as UTF-8.
+        # Read single bytes until the buffer can be decoded as UTF-8.
         my $buf = Buf.new;
-    	repeat {
-	    $buf.push($*IN.read(1));
-	} until try my $c = $buf.decode;
-	print "got: " ~ $c.ord ~ "\r\n";
+        repeat {
+            $buf.push($*IN.read(1));
+        } until try my $c = $buf.decode;
+        print "got: " ~ $c.ord ~ "\r\n";
         last if $c eq 'q';
     }
     
