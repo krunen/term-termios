@@ -7,7 +7,6 @@
     "LibraryMake"
   ],
   "depends": [
-    "v6"
   ],
   "description": "termios routines for Raku",
   "license": "Artistic-2.0",
