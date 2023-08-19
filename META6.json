@@ -13,12 +13,12 @@
   "name": "Term::termios",
   "perl": "6.c",
   "provides": {
-    "Term::termios": "lib/Term/termios.pm6",
-    "termios_constants": "lib/Term/termios.pm6"
+    "Term::termios": "lib/Term/termios.rakumod",
+    "termios_constants": "lib/Term/termios.rakumod"
   },
   "repo-type": "git",
   "resources": [
   ],
   "source-url": "git://github.com/krunen/term-termios.git",
-  "version": "0.2.2"
+  "version": "0.2.3"
 }
