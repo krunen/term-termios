@@ -1,12 +1,12 @@
 .PHONY: clean test
 
-all: %DESTDIR%/resources/libraries/%myhelper%
+all: %DESTDIR%/%myhelper%
 
 clean:
-	-rm %DESTDIR%/resources/libraries/%myhelper% %DESTDIR%/*.o
+	-rm %DESTDIR%/%myhelper% %DESTDIR%/*.o
 
-%DESTDIR%/resources/libraries/%myhelper%: myhelper%O%
-	%LD% %LDSHARED% %LDFLAGS% %LIBS% %LDOUT%%DESTDIR%/resources/libraries/%myhelper% myhelper%O%
+%DESTDIR%/%myhelper%: myhelper%O%
+	%LD% %LDSHARED% %LDFLAGS% %LIBS% %LDOUT%%DESTDIR%/%myhelper% myhelper%O%
 
 myhelper%O%: src/myhelper.c
 	%CC% -c %CCSHARED% %CCFLAGS% %CCOUT% myhelper%O% src/myhelper.c

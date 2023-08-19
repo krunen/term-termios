@@ -4,10 +4,10 @@
     "Karl Rune Nilsen"
   ],
   "build-depends": [
-    "LibraryMake"
+    "Distribution::Builder::MakeFromJSON"
   ],
   "depends": [
-    "LibraryMake"
+    "Distribution::Builder::MakeFromJSON"
   ],
   "description": "termios routines for Raku",
   "license": "Artistic-2.0",
@@ -22,5 +22,11 @@
     "libraries/myhelper"
   ],
   "source-url": "git://github.com/krunen/term-termios.git",
-  "version": "0.2.5"
+  "builder": "Distribution::Builder::MakeFromJSON",
+  "build": {
+    "makefile-variables": {
+      "myhelper": {"resource": "libraries/myhelper"}
+    }
+  },
+  "version": "0.2.6"
 }
