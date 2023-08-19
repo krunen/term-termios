@@ -1,0 +1,15 @@
+.PHONY: clean test
+
+all: %DESTDIR%/resources/libraries/%myhelper%
+
+clean:
+	-rm %DESTDIR%/resources/libraries/%myhelper% %DESTDIR%/*.o
+
+%DESTDIR%/resources/libraries/%myhelper%: myhelper%O%
+	%LD% %LDSHARED% %LDFLAGS% %LIBS% %LDOUT%%DESTDIR%/resources/libraries/%myhelper% myhelper%O%
+
+myhelper%O%: src/myhelper.c
+	%CC% -c %CCSHARED% %CCFLAGS% %CCOUT% myhelper%O% src/myhelper.c
+
+test: all
+	prove -e "raku -Ilib" t

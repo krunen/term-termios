@@ -12,35 +12,39 @@ Class to interface to libc termios functions
 
 =head1 SYNOPSIS
 
- use Term::termios;
-
- # Save the previous attrs
- my $saved_termios := Term::termios.new(fd => 1).getattr;
-
- # Get the existing attrs in order to modify them
- my $termios := Term::termios.new(fd => 1).getattr;
-
- # Set the tty to raw mode
- $termios.makeraw;
-
- # You could also do the same in the old-fashioned way
- $termios.unset_iflags(<BRKINT ICRNL ISTRIP IXON>);
- $termios.set_oflags(<ONLCR>);
- $termios.set_cflags(<CS8>);
- $termios.unset_lflags(<ECHO ICANON IEXTEN ISIG>);
-
- # Set the modified atributes, delayed until the buffer is emptied
- $termios.setattr(:DRAIN);
-
- # Loop on characters from STDIN
- loop {
-    my $c = $*IN.getc;
-    print "got: " ~ $c.ord ~ "\r\n";
-    last if $c eq 'q';
- }
-
- # Restore the saved, previous attributes before exit
- $saved_termios.setattr(:DRAIN);
+  use Term::termios;
+  
+  # Save the previous attrs
+  my $saved_termios := Term::termios.new(fd => 1).getattr;
+  
+  # Get the existing attrs in order to modify them
+  my $termios := Term::termios.new(fd => 1).getattr;
+  
+  # Set the tty to raw mode
+  $termios.makeraw;
+  
+  # You could also do the same in the old-fashioned way
+  $termios.unset_iflags(<BRKINT ICRNL ISTRIP IXON>);
+  $termios.set_oflags(<ONLCR>);
+  $termios.set_cflags(<CS8>);
+  $termios.unset_lflags(<ECHO ICANON IEXTEN ISIG>);
+  
+  # Set the modified atributes, delayed until the buffer is emptied
+  $termios.setattr(:DRAIN);
+  
+  # Loop on characters from STDIN
+  loop {
+      # Read single bytes until the buffer can be decoded as UTF-8.
+      my $buf = Buf.new;
+      repeat {
+          $buf.push($*IN.read(1));
+      } until try my $c = $buf.decode;
+      print "got: " ~ $c.ord ~ "\r\n";
+      last if $c eq 'q';
+  }
+  
+  # Restore the saved, previous attributes before exit
+  $saved_termios.setattr(:DRAIN);
 
 See the manpage L<man:termios(3)> for information about the flags.
 
@@ -141,7 +145,7 @@ class Term::termios is repr('CStruct') {
   sub tcgetattr(int32, Term::termios) returns int32 is native {*}
   sub tcsetattr(int32, int32, Term::termios) returns int32 is native {*}
   sub cfmakeraw(Term::termios) is native {*}
-  my constant $library = %?RESOURCES<libraries/myhelper>;
+  my constant $library = %?RESOURCES<libraries/myhelper>.absolute;
 
   class termios_constants is repr('CPointer') {};
   sub termios_create_constant() returns termios_constants is native($library) {*}

@@ -1,3 +1,10 @@
-say "1..1";
+use Test;
+
+plan(2);
+
 use Term::termios;
-say "ok 1";
+ok 1, 'use';
+
+my $termios = Term::termios.new(fd=>1);
+ok 2, 'new';
+
