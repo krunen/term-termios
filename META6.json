@@ -18,7 +18,8 @@
   },
   "repo-type": "git",
   "resources": [
+    "libraries/myhelper"
   ],
   "source-url": "git://github.com/krunen/term-termios.git",
-  "version": "0.2.3"
+  "version": "0.2.4"
 }
