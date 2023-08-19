@@ -1,7 +1,7 @@
 Term::termios
 ============
 
-termios routines for Rakudo Perl 6
+termios routines for Raku
 
     use Term::termios;
     
