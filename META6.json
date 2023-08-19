@@ -1,18 +1,25 @@
 {
-    "name"          : "Term::termios",
-    "version"       : "0.2",
-    "perl"          : "6.c",
-    "author"        : "github:krunen",
-    "authors"       : [ "Karl Rune Nilsen" ],
-    "description"   : "termios routines for Rakudo Perl 6",
-    "build-depends" : [ "LibraryMake" ],
-    "resources" : [ "libraries/myhelper" ],
-    "depends"       : [ ],
-    "provides"      : { "Term::termios" : "lib/Term/termios.pm6"},
-    "repo-type"     : "git",
-    "source-url"    : "git://github.com/krunen/term-termios.git",
-    "license"       : "Artistic-2.0",
-    "support"       : {
-        "irc" : "irc://irc.freenode.org/#perl6"
-    }
+  "auth": "zef:krunen",
+  "authors": [
+    "Karl Rune Nilsen"
+  ],
+  "build-depends": [
+    "LibraryMake"
+  ],
+  "depends": [
+    "v6"
+  ],
+  "description": "termios routines for Raku",
+  "license": "Artistic-2.0",
+  "name": "Term::termios",
+  "perl": "6.c",
+  "provides": {
+    "Term::termios": "lib/Term/termios.pm6",
+    "termios_constants": "lib/Term/termios.pm6"
+  },
+  "repo-type": "git",
+  "resources": [
+  ],
+  "source-url": "git://github.com/krunen/term-termios.git",
+  "version": "0.2.1"
 }
