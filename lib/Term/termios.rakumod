@@ -145,7 +145,7 @@ class Term::termios is repr('CStruct') {
   sub tcgetattr(int32, Term::termios) returns int32 is native {*}
   sub tcsetattr(int32, int32, Term::termios) returns int32 is native {*}
   sub cfmakeraw(Term::termios) is native {*}
-  my constant $library = %?RESOURCES<libraries/myhelper>.absolute;
+  my constant $library = %?RESOURCES<libraries/myhelper>;
 
   class termios_constants is repr('CPointer') {};
   sub termios_create_constant() returns termios_constants is native($library) {*}
