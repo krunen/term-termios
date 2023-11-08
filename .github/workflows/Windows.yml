@@ -9,11 +9,11 @@ on:
           - 'releases/**'
   pull_request:
   schedule: # MIN HOUR DAYOFMONTH MONTH DAYOFWEEK - schedule at least a bi-monthly run - just to keep an eye on long-time-not-touched repositories
-    - cron: '8 15 26 * *'
+    - cron: '22 11 6 * *'
 
 jobs:
   launch:
     uses: ./.github/workflows/runner.yml
     with:
       os: ${{ github.workflow }}
-      
+
