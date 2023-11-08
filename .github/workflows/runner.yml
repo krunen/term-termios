@@ -68,9 +68,11 @@ jobs:
     runs-on: ${{ inputs.os }}-${{ inputs.os_version }}
     steps:
 
-    - name: Windows - creating shortest possible TMP dir
+    - name: Windows LongPathsEnabled
       if: ${{ inputs.os == 'windows' }}
-      run: mkdir -Force "${{ env.ZEF_CONFIG_TEMPDIR }}"
+      run: |
+        New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+        mkdir -Force "${{ env.ZEF_CONFIG_TEMPDIR }}"
 
     - uses: Raku/setup-raku@v1
       with:

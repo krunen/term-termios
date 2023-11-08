@@ -9,7 +9,7 @@ on:
           - 'releases/**'
   pull_request:
   schedule: # MIN HOUR DAYOFMONTH MONTH DAYOFWEEK - schedule at least a bi-monthly run - just to keep an eye on long-time-not-touched repositories
-    - cron: '22 11 6 * *'
+    - cron: '40 7 6 * *'
 
 jobs:
   launch:
